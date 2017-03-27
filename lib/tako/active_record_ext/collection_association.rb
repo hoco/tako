@@ -10,19 +10,12 @@ module Tako
                             :create,
                             :create!,
                             :build,
-                            :any?,
-                            :count,
                             :empty?,
-                            :first,
                             :include?,
-                            :last,
-                            :length,
                             :load_target,
-                            :many?,
                             :reload,
                             :size,
-                            :select,
-                            :uniq
+                            :select
       end
     end
   end
