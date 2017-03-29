@@ -12,12 +12,14 @@ namespace :db do
       end
     end
 
+    desc 'Creates the databases from config/shards.yml for the current RAILS_ENV'
     task :create do
       (Tako.config[Tako.env] || []).values.each do |conf|
         ActiveRecord::Tasks::DatabaseTasks.create(conf)
       end
     end
 
+    desc 'Migrate the databases'
     task :migrate => [:environment] do
       paths = ActiveRecord::Tasks::DatabaseTasks.migrations_paths
       # load all migration files
@@ -63,6 +65,7 @@ namespace :db do
       end
     end
 
+    desc 'Drop the databases from config/shards.yml for the current RAILS_ENV'
     task :drop => [:load_config, :check_protected_environments] do
       (Tako.config[Tako.env] || []).values.each do |conf|
         ActiveRecord::Tasks::DatabaseTasks.drop(conf)
